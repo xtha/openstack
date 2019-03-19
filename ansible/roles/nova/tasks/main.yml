@@ -1,0 +1,10 @@
+---
+
+- name: yum install openstack-nova-compute packages
+  yum: name=openstack-nova-compute state=present
+  
+- name: copy nova.conf
+  template: src=nova.conf.j2 dest=/etc/nova/nova.conf
+  
+- name: start openstack-nova-compute-packages
+  service: name=openstack-nova-compute enabled=yes started=yes
